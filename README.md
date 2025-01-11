@@ -103,29 +103,4 @@ pip install requests beautifulsoup4
 
 ---
 
-## Observações
-
-1. **Limitações de Páginas e Artistas**:
-   - Você pode ajustar o número máximo de artistas e álbuns coletados com os parâmetros `max_artists` e `max_albums` na função `scrape_artist_data`.
-
-2. **Delays**:
-   - Para evitar sobrecarregar o servidor, há um delay de 2 segundos entre cada requisição.
-
-3. **Erros Potenciais**:
-   - Caso não consiga encontrar informações específicas (por exemplo, ano de lançamento ou gravadora), esses campos serão preenchidos como `"Unknown"`.
-
----
-
-## Contribuindo
-
-Sinta-se à vontade para contribuir com melhorias neste projeto. Sugestões incluem:
-- Adicionar suporte para mais detalhes de artistas ou álbuns.
-- Melhorar o tratamento de erros.
-- Implementar paralelismo para acelerar o scraping.
-
----
-
-## Licença
-
-Este projeto é de uso livre e está disponível sob a licença MIT.
 
