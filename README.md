@@ -1,62 +1,99 @@
-# Discogs Web Scraping Project
+# Discogs Artist & Album Scraper
 
-## Description
-This project is a web scraper designed to extract information about artists and albums from the Discogs website. The scraper collects data for a specified music genre and organizes it into a JSONL file. This includes details about the artists, their members, websites, albums, and tracks.
+Este projeto é um scraper desenvolvido em Python para extrair informações de artistas e álbuns de um gênerio musical específico no site [Discogs](https://www.discogs.com/). Ele utiliza as bibliotecas `requests` e `BeautifulSoup` para realizar o web scraping e coleta dados como nome do artista, membros, sites relacionados, informações de álbuns e faixas.
 
-## Features
-- Scrapes data for up to 10 artists in a specific genre.
-- Collects up to 10 albums per artist.
-- Gathers detailed information such as:
-  - Artist name, members, and external links.
-  - Album name, release year, label, and styles.
-  - Track details (number, name, duration).
-- Outputs data to a JSONL file.
+---
 
-## Requirements
-- Python 3.7 or higher
-- Required Python libraries:
-  - `requests`
-  - `beautifulsoup4`
+## Funcionalidades
 
-Install dependencies using:
+O código executa as seguintes tarefas:
+1. **Coleta de Artistas**: Extrai links de artistas em uma página de um gênero específico no Discogs.
+2. **Coleta de Detalhes do Artista**:
+   - Nome do artista.
+   - Membros da banda (se aplicável).
+   - Links para sites relacionados ao artista.
+3. **Coleta de Álbuns**:
+   - Nome do álbum.
+   - Ano de lançamento.
+   - Gravadora.
+   - Lista de faixas, incluindo número, nome e duração.
+4. **Exportação dos Dados**: Os dados coletados são salvos em um arquivo JSONL (`output.jsonl`).
+
+---
+
+## Requisitos
+
+Certifique-se de ter o Python 3.x instalado, além das seguintes bibliotecas:
+- `requests`
+- `BeautifulSoup` (do pacote `bs4`)
+- `json`
+- `re`
+- `time`
+
+Instale as bibliotecas necessárias com o comando:
 ```bash
-pip install -r requirements.txt
+pip install requests beautifulsoup4
 ```
 
-## Usage
-1. Clone the repository:
-```bash
-git clone https://github.com/your-repo-name/discogs-scraper.git
-cd discogs-scraper
-```
+---
 
-2. Update the genre in the script (default: `rock`).
+## Estrutura do Código
 
-3. Run the script:
-```bash
-python scraper.py
-```
+- **`BASE_URL` e `HEADERS`**: Contêm a URL base e o cabeçalho para simular um navegador.
+- **Função `scrape_artist_data`**:
+  - Recebe a URL de um gênero, o número máximo de artistas e álbuns para coletar.
+  - Extrai informações dos artistas e seus álbuns.
+- **Função `save_to_jsonl`**:
+  - Salva os dados extraídos em formato JSONL.
+- **Execução Principal (`__main__`)**:
+  - Define o gênero desejado.
+  - Executa a função de scraping e salva os resultados.
 
-4. The output will be saved as `output.jsonl` in the project directory.
+---
 
-## Output Format
-The data is saved in JSONL (JSON Lines) format. Each line represents a JSON object:
-```jsonl
+## Como Usar
+
+1. **Configurar o Gênero**:
+   Altere a variável `genre` para o gênero musical que deseja explorar. Exemplo:
+   ```python
+   genre = "rock"
+   ```
+   Isso irá gerar dados de artistas e álbuns relacionados ao gênero **Rock**.
+
+2. **Executar o Script**:
+   Execute o script no terminal:
+   ```bash
+   python scraper.py
+   ```
+
+3. **Visualizar os Dados**:
+   Após a execução, os dados serão salvos no arquivo `output.jsonl`. Cada linha do arquivo é um registro JSON representando um artista e suas informações.
+
+---
+
+## Exemplo de Estrutura de Dados Extraídos
+
+```json
 {
   "genre": "rock",
-  "artist_name": "Artist Name",
-  "members": ["Member 1", "Member 2"],
-  "sites": ["https://artist-site.com"],
+  "artist_name": "The Beatles",
+  "members": ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"],
+  "sites": ["https://www.thebeatles.com"],
   "albums": [
     {
-      "album_name": "Album Name",
-      "release_year": "2023",
-      "label": "Label Name",
+      "album_name": "Abbey Road",
+      "release_year": "1969",
+      "label": "Apple Records",
       "tracks": [
         {
           "track_number": "1",
-          "track_name": "Track Title",
-          "track_duration": "3:45"
+          "track_name": "Come Together",
+          "track_duration": "4:20"
+        },
+        {
+          "track_number": "2",
+          "track_name": "Something",
+          "track_duration": "3:03"
         }
       ]
     }
@@ -64,15 +101,31 @@ The data is saved in JSONL (JSON Lines) format. Each line represents a JSON obje
 }
 ```
 
-## Notes
-- Be mindful of the site's terms of service when scraping.
-- The script includes a delay between requests to prevent overwhelming the server.
+---
 
-## Testing
-Run unit tests using:
-```bash
-python -m unittest discover tests
-```
+## Observações
 
-## License
-This project is licensed under the MIT License.
+1. **Limitações de Páginas e Artistas**:
+   - Você pode ajustar o número máximo de artistas e álbuns coletados com os parâmetros `max_artists` e `max_albums` na função `scrape_artist_data`.
+
+2. **Delays**:
+   - Para evitar sobrecarregar o servidor, há um delay de 2 segundos entre cada requisição.
+
+3. **Erros Potenciais**:
+   - Caso não consiga encontrar informações específicas (por exemplo, ano de lançamento ou gravadora), esses campos serão preenchidos como `"Unknown"`.
+
+---
+
+## Contribuindo
+
+Sinta-se à vontade para contribuir com melhorias neste projeto. Sugestões incluem:
+- Adicionar suporte para mais detalhes de artistas ou álbuns.
+- Melhorar o tratamento de erros.
+- Implementar paralelismo para acelerar o scraping.
+
+---
+
+## Licença
+
+Este projeto é de uso livre e está disponível sob a licença MIT.
+
