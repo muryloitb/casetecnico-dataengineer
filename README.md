@@ -1,104 +1,159 @@
-# Discogs Artist & Album Scraper
+# Discogs Scraper
 
-Este projeto é um scraper desenvolvido em Python para extrair informações de artistas e álbuns de um gênerio musical específico no site [Discogs](https://www.discogs.com/). Ele utiliza as bibliotecas `requests` e `BeautifulSoup` para realizar o web scraping e coleta dados como nome do artista, membros, sites relacionados, informações de álbuns e faixas.
-
----
-
-## Funcionalidades
-
-O código executa as seguintes tarefas:
-1. **Coleta de Artistas**: Extrai links de artistas em uma página de um gênero específico no Discogs.
-2. **Coleta de Detalhes do Artista**:
-   - Nome do artista.
-   - Membros da banda (se aplicável).
-   - Links para sites relacionados ao artista.
-3. **Coleta de Álbuns**:
-   - Nome do álbum.
-   - Ano de lançamento.
-   - Gravadora.
-   - Lista de faixas, incluindo número, nome e duração.
-4. **Exportação dos Dados**: Os dados coletados são salvos em um arquivo JSONL (`output.jsonl`).
+Este README fornece uma explicação detalhada e humanizada sobre o script fornecido, que realiza scraping de dados do site Discogs para coletar informações sobre artistas, álbuns e músicas. O objetivo é simplificar a execução e manutenção do script, além de facilitar sua adaptação para diferentes casos de uso.
 
 ---
 
-## Requisitos
+## **Descrição Geral**
 
-Certifique-se de ter o Python 3.x instalado, além das seguintes bibliotecas:
-- `requests`
-- `BeautifulSoup` (do pacote `bs4`)
-- `json`
-- `re`
-- `time`
+O script utiliza o Selenium WebDriver e o BeautifulSoup para navegar no site Discogs e extrair informações de artistas e seus álbuns. Ele é configurado para trabalhar com um gênero musical específico e coleta até 10 artistas por vez, salvando os dados em um arquivo JSONL.
 
-Instale as bibliotecas necessárias com o comando:
+---
+
+## **Requisitos**
+
+1. **Python 3.7+**
+2. Bibliotecas Python necessárias:
+   - `selenium`
+   - `bs4` (BeautifulSoup)
+   - `re`
+   - `json`
+3. **Google Chrome** instalado no sistema.
+4. **ChromeDriver** compatível com a versão do Google Chrome instalada.
+
+### **Instalação das Dependências**
+
+Execute o comando abaixo para instalar as bibliotecas necessárias:
+
 ```bash
-pip install requests beautifulsoup4
+pip install selenium beautifulsoup4
 ```
 
 ---
 
-## Estrutura do Código
+## **Funcionamento do Script**
 
-- **`BASE_URL` e `HEADERS`**: Contêm a URL base e o cabeçalho para simular um navegador.
-- **Função `scrape_artist_data`**:
-  - Recebe a URL de um gênero, o número máximo de artistas e álbuns para coletar.
-  - Extrai informações dos artistas e seus álbuns.
-- **Função `save_to_jsonl`**:
-  - Salva os dados extraídos em formato JSONL.
-- **Execução Principal (`__main__`)**:
-  - Define o gênero desejado.
-  - Executa a função de scraping e salva os resultados.
+### **1. Configuração do Selenium**
 
----
+O script utiliza o Selenium para automatizar a navegação no Discogs. O Chrome é executado no modo headless (sem interface gráfica) para maior eficiência.
 
-## Como Usar
+### **2. Estrutura Principal do Script**
 
-1. **Configurar o Gênero**:
-   Altere a variável `genre` para o gênero musical que deseja explorar. Exemplo:
-   ```python
-   genre = "rock"
-   ```
-   Isso irá gerar dados de artistas e álbuns relacionados ao gênero **Rock**.
+#### \*\*Função: \*\***`coletar_links_artistas`**
 
-2. **Executar o Script**:
-   Execute o script no terminal:
-   ```bash
-   python scraper.py
-   ```
+- Navega na página de exploração de um gênero específico.
+- Coleta links dos perfis de até 10 artistas.
+- Retorna uma lista de URLs dos artistas.
 
-3. **Visualizar os Dados**:
-   Após a execução, os dados serão salvos no arquivo `output.jsonl`. Cada linha do arquivo é um registro JSON representando um artista e suas informações.
+#### \*\*Função: \*\***`extrair_dados_artista`**
 
----
+- Acessa a página de um artista e extrai:
+  - Nome do artista.
+  - Gêneros e estilos musicais.
+  - Membros da banda (se aplicável).
+  - Links para outros sites associados ao artista.
+  - Dados dos álbuns (limitado a 10 álbuns).
 
-## Exemplo de Estrutura de Dados Extraídos
+#### \*\*Função: \*\***`extrair_dados_album`**
+
+- Coleta detalhes de um álbum, incluindo:
+  - Nome do álbum.
+  - Ano de lançamento.
+  - Gravadora.
+  - Faixas e suas durações.
+
+#### \*\*Função Principal: \*\***`scrape_discogs`**
+
+- Define o gênero musical a ser explorado.
+- Configura o WebDriver.
+- Coleta os dados dos artistas e os salva progressivamente em um arquivo JSONL.
+
+### **3. Formato de Saída**
+
+Os dados coletados são salvos no formato JSONL (JSON Lines), que é ideal para grandes volumes de dados estruturados. Cada linha do arquivo representa os dados de um artista.
+
+Exemplo de uma linha do arquivo `discogs_data.jsonl`:
 
 ```json
 {
-  "genre": "rock",
+  "genre": "Rock",
   "artist_name": "The Beatles",
   "members": ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"],
-  "sites": ["https://www.thebeatles.com"],
+  "artist_sites": ["https://www.thebeatles.com"],
   "albums": [
     {
-      "album_name": "Abbey Road",
       "release_year": "1969",
+      "album_name": "Abbey Road",
       "label": "Apple Records",
       "tracks": [
-        {
-          "track_number": "1",
-          "track_name": "Come Together",
-          "track_duration": "4:20"
-        },
-        {
-          "track_number": "2",
-          "track_name": "Something",
-          "track_duration": "3:03"
-        }
+        {"track_number": 1, "track_name": "Come Together", "duration": "4:20"},
+        {"track_number": 2, "track_name": "Something", "duration": "3:03"}
       ]
     }
   ]
 }
+```
+
+---
+
+## **Como Executar**
+
+1. Certifique-se de que o ChromeDriver está configurado corretamente e o caminho está atualizado na função `Service`:
+
+```python
+service = Service("/caminho/para/chromedriver")
+```
+
+2. Ajuste o gênero musical na função principal:
+
+```python
+genre = "Rock"  # Substitua "Rock" pelo gênero desejado.
+```
+
+3. Execute o script no terminal:
+
+```bash
+python nome_do_script.py
+```
+
+4. Verifique o arquivo de saída `discogs_data.jsonl` na pasta do script.
+
+---
+
+## **Erros Comuns e Soluções**
+
+1. **Erro: ********`TimeoutException`******** ao carregar páginas**
+
+   - A conexão pode estar lenta ou o site sobrecarregado. Tente aumentar o tempo de espera em:
+
+   ```python
+   WebDriverWait(driver, 15)
+   ```
+
+2. **Erro: Caminho do ChromeDriver inválido**
+
+   - Certifique-se de que o ChromeDriver está instalado e o caminho correto foi fornecido na linha:
+
+   ```python
+   service = Service("/caminho/para/chromedriver")
+   ```
+
+3. **Erro ao coletar álbuns ou faixas**
+
+   - Nem todos os álbuns possuem todas as informações. O script já trata exceções para evitar interrupções.
+
+---
+
+## **Considerações Finais**
+
+- O script é projetado para capturar até 10 artistas por execução. Para aumentar este limite, ajuste o seguinte trecho:
+
+```python
+if len(artist_links) == 10:
+    break
+```
+
+
 ```
 
 ---
