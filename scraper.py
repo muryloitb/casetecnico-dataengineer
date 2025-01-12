@@ -1,116 +1,142 @@
-import requests
+import random
+import time
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import json
 import re
-from time import sleep
 
-# Base URL for Discogs (with Portuguese localization)
-BASE_URL = "https://www.discogs.com/pt_BR"
-HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}
 
-# Function to scrape artist information
-def scrape_artist_data(genre_url, max_artists=10, max_albums=10):
-    artists_data = []
-    page_number = 1
+def scrape_discogs():
+    base_url = "https://www.discogs.com/pt_BR"
+    genre_url = f"{base_url}/explore?genre=Rock"  # Substitua "Rock" pelo gênero desejado
 
-    while len(artists_data) < max_artists:
-        response = requests.get(f"{genre_url}?page={page_number}", headers=HEADERS)
-        soup = BeautifulSoup(response.content, "html.parser")
+    # Configurar o Selenium WebDriver
+    service = Service('/usr/local/bin/chromedriver')  # Certifique-se de que o chromedriver está no PATH ou ajuste o caminho
+    options = Options()
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3")
+    #options.add_argument('--headless')  # Executar o Chrome em modo headless (sem interface gráfica)
+    driver = webdriver.Chrome(service=service, options=options)
 
-        # Extract artist links
-        artist_links = soup.select("a[href*='/artist/']")
-        if not artist_links:
-            print("No more artist links found. Ending scraping.")
-            break
+    try:
+        # Acessar a página do gênero
+        driver.get(genre_url)
+        time.sleep(random.uniform(2, 5))  # Aguardar a página carregar
 
-        for artist_link in artist_links:
-            if len(artists_data) >= max_artists:
+        # Aguarde o carregamento da página inicial
+        WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".card.card_large a[href]")))
+
+        # Obter o conteúdo HTML após o carregamento
+        html_content = driver.page_source
+        soup = BeautifulSoup(html_content, 'html.parser')
+
+        # Coletar links dos artistas
+        artist_links = []
+        for artist in soup.select(".card.card_large a[href]"):
+            href = artist.get("href")
+            if href and "/artist/" in href:
+                artist_links.append(base_url + href)
+            if len(artist_links) == 10:  # Limitar a 10 artistas
                 break
 
-            artist_url = BASE_URL + artist_link['href']
-            artist_page = requests.get(artist_url, headers=HEADERS)
-            artist_soup = BeautifulSoup(artist_page.content, "html.parser")
+        if not artist_links:
+            print("Nenhum artista encontrado.")
+            return
 
+        data = []
+
+        for artist_url in artist_links:
             try:
-                # Extract artist details
-                artist_name = artist_soup.find("h1", class_="title").get_text(strip=True)
-                genre = genre_url.split("/")[-1]
+                print(f"Acessando artista: {artist_url}")
+                driver.get(artist_url)
+                time.sleep(random.uniform(2, 5))  # Aguardar a página carregar
+                WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
 
-                # Extract members
-                members = [member.get_text(strip=True) for member in artist_soup.select(".profile .link")]
+                artist_soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-                # Extract sites
-                sites = [site['href'] for site in artist_soup.select("a.external")]
+                # Nome do artista
+                artist_name = artist_soup.select_one("h1").text.strip() if artist_soup.select_one("h1") else "Desconhecido"
 
-                # Collect album data
+                # Gênero e estilos
+                genres_styles = artist_soup.select(".profile h3 + ul li")
+                genre = genres_styles[0].text.strip() if genres_styles else "N/A"
+                styles = [g.text.strip() for g in genres_styles[1:]] if len(genres_styles) > 1 else []
+
+                # Membros do artista
+                members = [m.text.strip() for m in artist_soup.select(".artist-members a")] or ["N/A"]
+
+                # Sites do artista
+                artist_sites = [s.text.strip() for s in artist_soup.select(".links a")] or ["N/A"]
+
+                # Coletar álbuns do artista
                 albums = []
-                album_links = artist_soup.select("a[href*='/release/']")[:max_albums]
+                album_elements = artist_soup.select(".release-item")[:10]
+                if not album_elements:
+                    print(f"Nenhum álbum encontrado para o artista {artist_name}.")
 
-                for album_link in album_links:
-                    album_url = BASE_URL + album_link['href']
-                    album_page = requests.get(album_url, headers=HEADERS)
-                    album_soup = BeautifulSoup(album_page.content, "html.parser")
-
-                    album_name = album_soup.find("h1", class_="title").get_text(strip=True)
-                    release_year = album_soup.find("span", class_="release-year").get_text(strip=True) if album_soup.find("span", class_="release-year") else "Unknown"
-                    label = album_soup.find("a", href=re.compile("/label/")).get_text(strip=True) if album_soup.find("a", href=re.compile("/label/")) else "Unknown"
-
-                    # Tracks data
+                for album in album_elements:
+                    album_name = album.select_one(".title").text.strip() if album.select_one(".title") else "Desconhecido"
+                    album_url = base_url + album.select_one(".title a")["href"] if album.select_one(".title a") else None
+                    release_year = re.search(r"\d{4}", album.text).group(0) if re.search(r"\d{4}", album.text) else "Desconhecido"
+                    label = "N/A"
                     tracks = []
-                    for track in album_soup.select(".tracklist_track"):
-                        track_number = track.select_one(".tracklist_track_pos").get_text(strip=True) if track.select_one(".tracklist_track_pos") else "Unknown"
-                        track_name = track.select_one(".tracklist_track_title").get_text(strip=True) if track.select_one(".tracklist_track_title") else "Unknown"
-                        track_duration = track.select_one(".tracklist_track_duration").get_text(strip=True) if track.select_one(".tracklist_track_duration") else "Unknown"
-                        tracks.append({
-                            "track_number": track_number,
-                            "track_name": track_name,
-                            "track_duration": track_duration
-                        })
+
+                    # Detalhes do álbum
+                    if album_url:
+                        try:
+                            print(f"Acessando álbum: {album_url}")
+                            driver.get(album_url)
+                            time.sleep(random.uniform(2, 5))  # Aguardar a página carregar
+                            WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME, "tracklist_track")))
+                            album_soup = BeautifulSoup(driver.page_source, 'html.parser')
+                            label = album_soup.select_one(".label_and_cat h4").text.strip() if album_soup.select_one(".label_and_cat h4") else "N/A"
+
+                            # Coletar faixas
+                            for track_number, track in enumerate(album_soup.select(".tracklist_track .track_title"), start=1):
+                                track_name = track.text.strip()
+                                duration = track.find_next_sibling(".track_duration").text.strip() if track.find_next_sibling(".track_duration") else "N/A"
+                                tracks.append({"track_number": track_number, "track_name": track_name, "duration": duration})
+
+                        except Exception as e:
+                            print(f"Erro ao acessar detalhes do álbum: {e}")
 
                     albums.append({
-                        "album_name": album_name,
                         "release_year": release_year,
+                        "album_name": album_name,
                         "label": label,
-                        "tracks": tracks
+                        "tracks": tracks,
+                        "styles": styles
                     })
 
-                artists_data.append({
+                artist_data = {
                     "genre": genre,
                     "artist_name": artist_name,
                     "members": members,
-                    "sites": sites,
+                    "artist_sites": artist_sites,
                     "albums": albums
-                })
+                }
+
+                data.append(artist_data)
+
+                # Salvar progressivamente no formato JSONL
+                with open("discogs_data.jsonl", "a", encoding="utf-8") as file:
+                    file.write(json.dumps(artist_data, ensure_ascii=False) + "\n")
+
+                print(f"Dados do artista {artist_name} salvos.")
 
             except Exception as e:
-                print(f"Error processing artist: {artist_link['href']} - {e}")
+                print(f"Erro ao acessar dados do artista: {e}")
 
-            # Delay to avoid overwhelming the server
-            sleep(2)
+    finally:
+        # Fechar o navegador
+        driver.quit()
 
-        page_number += 1
+    print("Dados completos salvos em discogs_data.jsonl")
 
-    return artists_data
-
-# Save data to JSONL file
-def save_to_jsonl(data, filename="output.jsonl"):
-    with open(filename, "w", encoding="utf-8") as f:
-        for entry in data:
-            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
-
-# Main execution
 if __name__ == "__main__":
-    genre = "rock"  # Example genre
-    genre_url = f"{BASE_URL}/genre/{genre}"
-
-    print("Scraping data... This may take a while.")
-    data = scrape_artist_data(genre_url)
-
-    print(f"Saving data to JSONL file.")
-    save_to_jsonl(data)
-
-    print("Scraping complete. Data saved to output.jsonl.")
-
-    save_to_jsonl(data)
-
-    print("Scraping complete. Data saved to output.jsonl.")
+    scrape_discogs()
