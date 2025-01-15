@@ -72,16 +72,19 @@ def extrair_dados_artista(driver, artist_url):
                 "active": is_active
             })
 
-        # Gênero e estilos
-        genres_styles = artist_soup.select(".profile h3 + ul li")
-        genre = genres_styles[0].text.strip() if genres_styles else "N/A"
-        styles = [g.text.strip() for g in genres_styles[1:]] if len(genres_styles) > 1 else []
+        # Gênero
+        genre_element = artist_soup.select_one("a[href*='/genre/']")
+        genre = genre_element.text.strip() if genre_element else "Desconhecido"
+
+        # Estilos
+        styles_elements = artist_soup.select("a[href*='/style/']")
+        styles = [style.text.strip() for style in styles_elements]
 
         # Coletar álbuns do artista (limitado a 10)
         albums = []
         album_elements = artist_soup.select(".release-item")[:10]
         for album_element in album_elements:
-            album_data = extrair_dados_album(driver, album_element)
+            album_data = extrair_dados_album(BeautifulSoup(str(album_element), "html.parser"))
             if album_data:
                 albums.append(album_data)
 
@@ -100,46 +103,35 @@ def extrair_dados_artista(driver, artist_url):
         print(f"Erro ao acessar dados do artista {artist_url}: {e}")
         return None
 
-def extrair_dados_album(driver, album_element):
+def extrair_dados_album(album_soup):
     """Extrai os dados de um álbum, incluindo nome, ano de lançamento, gravadora e faixas."""
-
     try:
-        album_name = album_element.select_one(".title").text.strip() if album_element.select_one(".title") else "Desconhecido"
-        album_url = base_url + album_element.select_one(".title a")["href"] if album_element.select_one(".title a") else None
-        release_year_match = re.search(r"\d{4}", album_element.text)
-        release_year = release_year_match.group(0) if release_year_match else "Desconhecido"
-        label = "N/A"
+        # Nome do álbum
+        album_name = album_soup.select_one("h1.MuiTypography-headLineXL.title_1q3xW").text.strip() if album_soup.select_one("h1.MuiTypography-headLineXL.title_1q3xW") else "Desconhecido"
+
+        # Ano de lançamento
+        release_year = album_soup.select_one("time").get("datetime", "Desconhecido") if album_soup.select_one("time") else "Desconhecido"
+
+        # Gravadora
+        label_element = album_soup.select_one("span.MuiTypography-labelSmall.css-1kybk0l a")
+        label = label_element.text.strip() if label_element else "Desconhecido"
+
+        # Faixas
         tracks = []
-
-        if album_url:
-            # Detalhes do álbum
-            print(f"Acessando álbum: {album_url}")
-            driver.get(album_url)
-            WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "tracklist_track"))
-            )
-
-            album_soup = BeautifulSoup(driver.page_source, "html.parser")
-            label_elem = album_soup.select_one(".label_and_cat h4")
-            label = label_elem.text.strip() if label_elem else "N/A"
-
-            # Coletar faixas
-            for track_number, track_element in enumerate(
-                    album_soup.select(".tracklist_track .track_title"), start=1
-            ):
-                duration_elem = track_element.find_next_sibling(".track_duration")
-                duration = duration_elem.text.strip() if duration_elem else "N/A"
-                tracks.append(
-                    {
-                        "track_number": track_number,
-                        "track_name": track_element.text.strip(),
-                        "duration": duration,
-                    }
-                )
+        track_elements = album_soup.select("tr[data-track-position]")
+        for track_element in track_elements:
+            track_title = track_element.select_one("span.trackTitle_CTKp4").text.strip() if track_element.select_one("span.trackTitle_CTKp4") else "Desconhecido"
+            written_by = [
+                composer.text.strip() for composer in track_element.select("span.link_15cpV a")
+            ]
+            tracks.append({
+                "track_title": track_title,
+                "written_by": written_by
+            })
 
         return {
-            "release_year": release_year,
             "album_name": album_name,
+            "release_year": release_year,
             "label": label,
             "tracks": tracks,
         }
@@ -184,5 +176,4 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
-
 
