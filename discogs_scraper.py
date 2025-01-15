@@ -62,13 +62,20 @@ def extrair_dados_artista(driver, artist_url):
             for site in artist_soup.select("a.link_1ctor.link_3fSf-")
         ]
 
+        # Coletar membros do artista
+        members = []
+        for member in artist_soup.select("a.link_1ctor span"):
+            name = member.text.strip()
+            is_active = "strikeThrough_3twT1" not in member.get("class", [])
+            members.append({
+                "name": name,
+                "active": is_active
+            })
+
         # Gênero e estilos
         genres_styles = artist_soup.select(".profile h3 + ul li")
         genre = genres_styles[0].text.strip() if genres_styles else "N/A"
         styles = [g.text.strip() for g in genres_styles[1:]] if len(genres_styles) > 1 else []
-
-        # Membros do artista
-        members = [m.text.strip() for m in artist_soup.select(".artist-members a")] or ["N/A"]
 
         # Coletar álbuns do artista (limitado a 10)
         albums = []
@@ -81,9 +88,9 @@ def extrair_dados_artista(driver, artist_url):
         artist_data = {
             "artist_name": artist_name,
             "artist_sites": artist_sites,
+            "members": members,
             "genre": genre,
             "styles": styles,
-            "members": members,
             "albums": albums,
         }
 
@@ -177,4 +184,5 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
+
 
