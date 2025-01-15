@@ -53,6 +53,15 @@ def extrair_dados_artista(driver, artist_url):
         # Nome do artista
         artist_name = artist_soup.select_one("h1").text.strip() if artist_soup.select_one("h1") else "Desconhecido"
 
+        # Coletar sites do artista
+        artist_sites = [
+            {
+                "name": site.text.strip(),
+                "url": site.get("href").strip(),
+            }
+            for site in artist_soup.select("a.link_1ctor.link_3fSf-")
+        ]
+
         # Gênero e estilos
         genres_styles = artist_soup.select(".profile h3 + ul li")
         genre = genres_styles[0].text.strip() if genres_styles else "N/A"
@@ -60,9 +69,6 @@ def extrair_dados_artista(driver, artist_url):
 
         # Membros do artista
         members = [m.text.strip() for m in artist_soup.select(".artist-members a")] or ["N/A"]
-
-        # Sites do artista
-        artist_sites = [s.text.strip() for s in artist_soup.select(".links a")] or ["N/A"]
 
         # Coletar álbuns do artista (limitado a 10)
         albums = []
@@ -73,10 +79,11 @@ def extrair_dados_artista(driver, artist_url):
                 albums.append(album_data)
 
         artist_data = {
-            "genre": genre,
             "artist_name": artist_name,
-            "members": members,
             "artist_sites": artist_sites,
+            "genre": genre,
+            "styles": styles,
+            "members": members,
             "albums": albums,
         }
 
@@ -134,7 +141,6 @@ def extrair_dados_album(driver, album_element):
         print(f"Erro ao acessar detalhes do álbum: {e}")
         return None
 
-
 def scrape_discogs():
     base_url = "https://www.discogs.com/pt_BR"
     genre = "Rock"  # Substitua "Rock" pelo gênero desejado
@@ -171,3 +177,4 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
+
