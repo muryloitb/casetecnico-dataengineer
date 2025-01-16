@@ -90,24 +90,4 @@ O código acima é um script desenvolvido em Python para coletar informações d
 5. **Verifique os Dados Coletados**
    - O arquivo `discogs_data.json` será criado na mesma pasta do script.
 
----
-
-#### **Possíveis Melhorias**
-
-1. **Aumentar o Limite de Artistas e Álbuns**
-   - Remova ou ajuste o limite imposto no código:
-     ```python
-     if len(artist_links) == 10:  # Limitar a 10 artistas
-         break
-     ```
-
-2. **Adicionar Mais Informações**
-   - Expandir o scraping para incluir mais detalhes, como prêmios, críticas ou resenhas dos álbuns.
-
-3. **Melhorar a Resiliência**
-   - Adicionar mais verificações para tratar erros e elementos ausentes no site.
-
-4. **Interface Gráfica ou API**
-   - Transformar o script em uma API ou criar uma interface para uso mais amigável.
-
---- - - - - - - -- - - - - - - - - - - -- - - - - - -- - - - - - - - - - - - - - -- - - - - - - - 
+----------------------------------------------------------------------------------------------------------------
