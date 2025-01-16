@@ -87,8 +87,8 @@ def extrair_dados_artista(driver, artist_url, base_url):
             if link.get("href")
         ]
 
-        # Limitar a 2 álbuns
-        album_links = album_links[:2]
+        # Limitar a 1 álbum
+        album_links = album_links[:1]
 
         # Coletar dados dos álbuns
         albums = []
@@ -126,7 +126,8 @@ def extrair_dados_album(driver, album_url):
         album_name = album_soup.select_one("h1").text.strip() if album_soup.select_one("h1") else "Desconhecido"
 
         # Ano de lançamento
-        release_year = album_soup.select_one("a[href*='/year/']").text.strip() if album_soup.select_one("a[href*='/year/']") else "Desconhecido"
+        release_year_element = album_soup.select_one("time[datetime]")
+        release_year = release_year_element.text.strip() if release_year_element else "Desconhecido"
 
         # Gravadora
         label_element = album_soup.select_one("a[href*='/label/']")
@@ -134,13 +135,15 @@ def extrair_dados_album(driver, album_url):
 
         # Faixas
         tracks = []
-        track_elements = album_soup.select("table.tracklist_3QGRS tr[data-track-position]")
+        track_elements = album_soup.select("table.tracklist_4KOvL tr[data-track-position]")
         for track_element in track_elements:
             track_position = track_element.get("data-track-position", "Desconhecido")
-            track_title = track_element.select_one(".trackTitle_CTKp4").text.strip() if track_element.select_one(".trackTitle_CTKp4") else "Desconhecido"
+            track_title = track_element.select_one(".trackTitleNoArtist_ANE8Q span").text.strip() if track_element.select_one(".trackTitleNoArtist_ANE8Q span") else "Desconhecido"
+            duration = track_element.select_one(".duration_25zMZ").text.strip() if track_element.select_one(".duration_25zMZ") else "Desconhecido"
             tracks.append({
                 "track_position": track_position,
-                "track_title": track_title
+                "track_title": track_title,
+                "duration": duration
             })
 
         return {
@@ -193,5 +196,6 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
+
 
 
