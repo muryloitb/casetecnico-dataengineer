@@ -87,8 +87,8 @@ def extrair_dados_artista(driver, artist_url, base_url):
             if link.get("href")
         ]
 
-        # Limitar a 10 álbuns
-        album_links = album_links[:10]
+        # Limitar a 2 álbuns
+        album_links = album_links[:2]
 
         # Coletar dados dos álbuns
         albums = []
@@ -134,13 +134,13 @@ def extrair_dados_album(driver, album_url):
 
         # Faixas
         tracks = []
-        track_elements = album_soup.select(".tracklist_track")
+        track_elements = album_soup.select("table.tracklist_3QGRS tr[data-track-position]")
         for track_element in track_elements:
-            track_title = track_element.select_one(".tracklist_track_title").text.strip() if track_element.select_one(".tracklist_track_title") else "Desconhecido"
-            duration = track_element.select_one(".tracklist_track_duration").text.strip() if track_element.select_one(".tracklist_track_duration") else "Desconhecido"
+            track_position = track_element.get("data-track-position", "Desconhecido")
+            track_title = track_element.select_one(".trackTitle_CTKp4").text.strip() if track_element.select_one(".trackTitle_CTKp4") else "Desconhecido"
             tracks.append({
-                "track_title": track_title,
-                "duration": duration
+                "track_position": track_position,
+                "track_title": track_title
             })
 
         return {
@@ -167,6 +167,8 @@ def scrape_discogs():
     options.add_argument("--headless")  # Executar o Chrome em modo headless
     driver = webdriver.Chrome(service=service, options=options)
 
+    artists_data = []  # Lista para armazenar os dados de todos os artistas
+
     try:
         artist_links = coletar_links_artistas(driver, base_url, genre)
         if not artist_links:
@@ -176,19 +178,19 @@ def scrape_discogs():
         for artist_url in artist_links:
             artist_data = extrair_dados_artista(driver, artist_url, base_url)
             if artist_data:
-                # Salvar progressivamente no formato JSONL
-                with open("discogs_data.jsonl", "a", encoding="utf-8") as file:
-                    file.write(json.dumps(artist_data, ensure_ascii=False) + "\n")
-
+                artists_data.append(artist_data)
                 print(f"Dados do artista {artist_data['artist_name']} salvos.")
+
+        # Salvar os dados em um arquivo JSON formatado
+        with open("discogs_data.json", "w", encoding="utf-8") as file:
+            json.dump(artists_data, file, ensure_ascii=False, indent=4)
 
     finally:
         # Fechar o navegador
         driver.quit()
 
-    print("Dados completos salvos em discogs_data.jsonl")
+    print("Dados completos salvos em discogs_data.json")
 
 if __name__ == "__main__":
     scrape_discogs()
-
 
