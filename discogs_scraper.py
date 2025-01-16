@@ -130,7 +130,9 @@ def extrair_dados_album(driver, album_url):
         release_year = release_year_element.text.strip() if release_year_element else "Desconhecido"
 
         # Gravadora
-        label_element = album_soup.select_one("a[href*='/label/']")
+        label_element = album_soup.select_one("li span.entity_1XpR8 + a")
+        if not label_element:
+            label_element = album_soup.select_one("a[href*='/label/']")
         label = label_element.text.strip() if label_element else "Desconhecido"
 
         # Faixas
@@ -196,6 +198,7 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
+
 
 
 
