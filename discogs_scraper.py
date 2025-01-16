@@ -18,7 +18,7 @@ def coletar_links_artistas(driver, base_url, genre):
     driver.get(genre_url)
 
     try:
-        WebDriverWait(driver, 15).until(
+        WebDriverWait(driver, 15).until(   
             EC.presence_of_all_elements_located(
                 (By.CSS_SELECTOR, ".card.card_large a[href]")
             )
