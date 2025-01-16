@@ -40,8 +40,8 @@ def coletar_links_artistas(driver, base_url, genre):
 
     return artist_links
 
-def extrair_dados_artista(driver, artist_url):
-    """Extrai os dados de um artista, incluindo nome, gênero, membros e álbuns."""
+def extrair_dados_artista(driver, artist_url, base_url):
+    """Extrai os dados de um artista, incluindo nome, gênero, membros e links dos álbuns."""
 
     try:
         print(f"Acessando artista: {artist_url}")
@@ -80,11 +80,21 @@ def extrair_dados_artista(driver, artist_url):
         styles_elements = artist_soup.select("a[href*='/style/']")
         styles = [style.text.strip() for style in styles_elements]
 
-        # Coletar álbuns do artista (limitado a 10)
+        # Links para os álbuns
+        album_links = [
+            link.get("href")
+            for link in artist_soup.select("a[href*='/release/']")
+            if link.get("href")
+        ]
+
+        # Limitar a 10 álbuns
+        album_links = album_links[:10]
+
+        # Coletar dados dos álbuns
         albums = []
-        album_elements = artist_soup.select(".release-item")[:10]
-        for album_element in album_elements:
-            album_data = extrair_dados_album(BeautifulSoup(str(album_element), "html.parser"))
+        for album_link in album_links:
+            album_url = base_url + album_link
+            album_data = extrair_dados_album(driver, album_url)
             if album_data:
                 albums.append(album_data)
 
@@ -103,30 +113,34 @@ def extrair_dados_artista(driver, artist_url):
         print(f"Erro ao acessar dados do artista {artist_url}: {e}")
         return None
 
-def extrair_dados_album(album_soup):
+def extrair_dados_album(driver, album_url):
     """Extrai os dados de um álbum, incluindo nome, ano de lançamento, gravadora e faixas."""
     try:
+        print(f"Acessando álbum: {album_url}")
+        driver.get(album_url)
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+
+        album_soup = BeautifulSoup(driver.page_source, "html.parser")
+
         # Nome do álbum
-        album_name = album_soup.select_one("h1.MuiTypography-headLineXL.title_1q3xW").text.strip() if album_soup.select_one("h1.MuiTypography-headLineXL.title_1q3xW") else "Desconhecido"
+        album_name = album_soup.select_one("h1").text.strip() if album_soup.select_one("h1") else "Desconhecido"
 
         # Ano de lançamento
-        release_year = album_soup.select_one("time").get("datetime", "Desconhecido") if album_soup.select_one("time") else "Desconhecido"
+        release_year = album_soup.select_one("time[datetime]").get("datetime", "Desconhecido") if album_soup.select_one("time[datetime]") else "Desconhecido"
 
         # Gravadora
-        label_element = album_soup.select_one("span.MuiTypography-labelSmall.css-1kybk0l a")
+        label_element = album_soup.select_one("a[href*='/label/']")
         label = label_element.text.strip() if label_element else "Desconhecido"
 
         # Faixas
         tracks = []
-        track_elements = album_soup.select("tr[data-track-position]")
+        track_elements = album_soup.select(".tracklist_track")
         for track_element in track_elements:
-            track_title = track_element.select_one("span.trackTitle_CTKp4").text.strip() if track_element.select_one("span.trackTitle_CTKp4") else "Desconhecido"
-            written_by = [
-                composer.text.strip() for composer in track_element.select("span.link_15cpV a")
-            ]
+            track_title = track_element.select_one(".tracklist_track_title").text.strip() if track_element.select_one(".tracklist_track_title") else "Desconhecido"
+            duration = track_element.select_one(".tracklist_track_duration").text.strip() if track_element.select_one(".tracklist_track_duration") else "Desconhecido"
             tracks.append({
                 "track_title": track_title,
-                "written_by": written_by
+                "duration": duration
             })
 
         return {
@@ -137,7 +151,7 @@ def extrair_dados_album(album_soup):
         }
 
     except Exception as e:
-        print(f"Erro ao acessar detalhes do álbum: {e}")
+        print(f"Erro ao acessar detalhes do álbum {album_url}: {e}")
         return None
 
 def scrape_discogs():
@@ -160,7 +174,7 @@ def scrape_discogs():
             return
 
         for artist_url in artist_links:
-            artist_data = extrair_dados_artista(driver, artist_url)
+            artist_data = extrair_dados_artista(driver, artist_url, base_url)
             if artist_data:
                 # Salvar progressivamente no formato JSONL
                 with open("discogs_data.jsonl", "a", encoding="utf-8") as file:
@@ -176,4 +190,5 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
+
 
