@@ -1,4 +1,4 @@
-# Scraping de Artistas e Álbuns no Discogs
+# Scraping de Artistas e Álbuns no Discogs 
 
 ---
 
