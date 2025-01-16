@@ -1,0 +1,1527 @@
+[
+    {
+        "artist_name": "Starsailor",
+        "artist_sites": [
+            {
+                "name": "starsailorband.co.uk",
+                "url": "http://www.starsailorband.co.uk"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/starsailorofficial/"
+            },
+            {
+                "name": "X",
+                "url": "https://twitter.com/starsailorband?lang=en"
+            },
+            {
+                "name": "Instagram",
+                "url": "https://www.instagram.com/starsailorofficial/"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Starsailor_(band)"
+            }
+        ],
+        "members": [
+            {
+                "name": "Barry Westhead",
+                "active": true
+            },
+            {
+                "name": "Ben Byrne",
+                "active": true
+            },
+            {
+                "name": "James Stelfox",
+                "active": true
+            },
+            {
+                "name": "James Walsh (2)",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Starsailor – Love Is Here",
+                "release_year": "2001",
+                "label": "Chrysalis",
+                "tracks": [
+                    {
+                        "track_position": "1",
+                        "track_title": "Tie Up My Hands",
+                        "duration": "5:46"
+                    },
+                    {
+                        "track_position": "2",
+                        "track_title": "Poor Misguided Fool",
+                        "duration": "3:52"
+                    },
+                    {
+                        "track_position": "3",
+                        "track_title": "Alcoholic",
+                        "duration": "2:56"
+                    },
+                    {
+                        "track_position": "4",
+                        "track_title": "Lullaby",
+                        "duration": "4:14"
+                    },
+                    {
+                        "track_position": "5",
+                        "track_title": "Way To Fall",
+                        "duration": "4:30"
+                    },
+                    {
+                        "track_position": "6",
+                        "track_title": "Fever",
+                        "duration": "4:04"
+                    },
+                    {
+                        "track_position": "7",
+                        "track_title": "She Just Wept",
+                        "duration": "4:12"
+                    },
+                    {
+                        "track_position": "8",
+                        "track_title": "Talk Her Down",
+                        "duration": "4:11"
+                    },
+                    {
+                        "track_position": "9",
+                        "track_title": "Love Is Here",
+                        "duration": "4:42"
+                    },
+                    {
+                        "track_position": "10",
+                        "track_title": "Good Souls",
+                        "duration": "4:53"
+                    },
+                    {
+                        "track_position": "11.1",
+                        "track_title": "Coming Down",
+                        "duration": "3:06"
+                    },
+                    {
+                        "track_position": "11.2",
+                        "track_title": "(silence)",
+                        "duration": "10:30"
+                    },
+                    {
+                        "track_position": "11.3",
+                        "track_title": "(untitled)",
+                        "duration": "0:54"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Darkthrone",
+        "artist_sites": [
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Darkthrone-101075189934422/"
+            },
+            {
+                "name": "Instagram",
+                "url": "https://www.instagram.com/darkthroneofficial/"
+            },
+            {
+                "name": "Lastfm",
+                "url": "https://www.last.fm/music/Darkthrone"
+            },
+            {
+                "name": "MySpace",
+                "url": "https://myspace.com/officialdarkthrone"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Darkthrone"
+            }
+        ],
+        "members": [
+            {
+                "name": "Black Death (8)",
+                "active": true
+            },
+            {
+                "name": "Anders Risberget",
+                "active": false
+            },
+            {
+                "name": "Dag Nilsen",
+                "active": false
+            },
+            {
+                "name": "Gylve Nagell",
+                "active": true
+            },
+            {
+                "name": "Ivar Enger",
+                "active": false
+            },
+            {
+                "name": "Ted Skjellum",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Dark Throne* – Soulside Journey",
+                "release_year": "1991",
+                "label": "Caroline Records",
+                "tracks": [
+                    {
+                        "track_position": "1",
+                        "track_title": "Cromlech",
+                        "duration": "4:11"
+                    },
+                    {
+                        "track_position": "2",
+                        "track_title": "Sunrise Over Locus Mortis",
+                        "duration": "3:30"
+                    },
+                    {
+                        "track_position": "3",
+                        "track_title": "Soulside Journey",
+                        "duration": "4:36"
+                    },
+                    {
+                        "track_position": "4",
+                        "track_title": "Accumulation Of Generalization",
+                        "duration": "3:17"
+                    },
+                    {
+                        "track_position": "5",
+                        "track_title": "Neptune Towers",
+                        "duration": "3:14"
+                    },
+                    {
+                        "track_position": "6",
+                        "track_title": "Sempiternal Sepulchrality",
+                        "duration": "3:32"
+                    },
+                    {
+                        "track_position": "7",
+                        "track_title": "Grave With A View",
+                        "duration": "3:27"
+                    },
+                    {
+                        "track_position": "8",
+                        "track_title": "Iconoclasm Sweeps Cappadocia",
+                        "duration": "4:00"
+                    },
+                    {
+                        "track_position": "9",
+                        "track_title": "Nor The Silent Whispers",
+                        "duration": "3:17"
+                    },
+                    {
+                        "track_position": "10",
+                        "track_title": "The Watchtower",
+                        "duration": "4:57"
+                    },
+                    {
+                        "track_position": "11",
+                        "track_title": "Eon",
+                        "duration": "3:38"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Hell",
+        "artist_sites": [
+            {
+                "name": "djhell.de",
+                "url": "http://www.djhell.de"
+            },
+            {
+                "name": "Bandcamp",
+                "url": "http://djhellofficial.bandcamp.com"
+            },
+            {
+                "name": "Facebook",
+                "url": "http://www.facebook.com/DJHellOfficial"
+            },
+            {
+                "name": "Instagram",
+                "url": "http://www.instagram.com/hellmutgeier"
+            },
+            {
+                "name": "Instagram",
+                "url": "http://www.instagram.com/djhellofficial"
+            },
+            {
+                "name": "Linktree",
+                "url": "http://linktr.ee/djhellofficial"
+            },
+            {
+                "name": "Lastfm",
+                "url": "http://www.last.fm/de/music/DJ+Hell"
+            },
+            {
+                "name": "Mixcloud",
+                "url": "http://www.mixcloud.com/djhellofficial"
+            },
+            {
+                "name": "Soundcloud",
+                "url": "http://soundcloud.com/djhellofficial"
+            },
+            {
+                "name": "X",
+                "url": "http://twitter.com/DJHellOfficial"
+            },
+            {
+                "name": "Vimeo",
+                "url": "http://vimeo.com/gigolorecords"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "http://en.wikipedia.org/wiki/DJ_Hell"
+            },
+            {
+                "name": "YouTube",
+                "url": "http://www.youtube.com/channel/UC864gNQUBQNYAfE1MOWX9qw"
+            }
+        ],
+        "members": [
+            {
+                "name": "Helmut Josef Geier",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Hell – Geteert & Gefedert",
+                "release_year": "1994",
+                "label": "Disko B",
+                "tracks": [
+                    {
+                        "track_position": "A",
+                        "track_title": "Herz",
+                        "duration": "11:36"
+                    },
+                    {
+                        "track_position": "B1",
+                        "track_title": "I Feel Love",
+                        "duration": "8:28"
+                    },
+                    {
+                        "track_position": "B2",
+                        "track_title": "Im Mutterleib",
+                        "duration": "3:12"
+                    },
+                    {
+                        "track_position": "C1",
+                        "track_title": "Hot On The Heels Of Love",
+                        "duration": "8:05"
+                    },
+                    {
+                        "track_position": "C2",
+                        "track_title": "Definition Of House (Northstar Remix)",
+                        "duration": "6:23"
+                    },
+                    {
+                        "track_position": "D1",
+                        "track_title": "Allerseelen",
+                        "duration": "9:01"
+                    },
+                    {
+                        "track_position": "D2",
+                        "track_title": "My Life Is Hell",
+                        "duration": "7:46"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Alan Vega",
+        "artist_sites": [
+            {
+                "name": "alanvega.com",
+                "url": "https://www.alanvega.com"
+            },
+            {
+                "name": "Bandcamp",
+                "url": "https://alanvega.bandcamp.com"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/officialalanvega/"
+            },
+            {
+                "name": "Instagram",
+                "url": "https://www.instagram.com/officialalanvega/"
+            },
+            {
+                "name": "MySpace",
+                "url": "https://myspace.com/alanvegamusic"
+            },
+            {
+                "name": "X",
+                "url": "https://twitter.com/alanvegahq"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Alan_Vega"
+            }
+        ],
+        "members": [
+            {
+                "name": "Alan Bermowitz",
+                "active": true
+            },
+            {
+                "name": "Duetonal",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Alan Vega – Alan Vega",
+                "release_year": "1981",
+                "label": "PVC Records",
+                "tracks": [
+                    {
+                        "track_position": "A1",
+                        "track_title": "Jukebox Babe",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "A2",
+                        "track_title": "Fireball",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "A3",
+                        "track_title": "Kung Foo Cowboy",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "A4",
+                        "track_title": "Love Cry",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "B1",
+                        "track_title": "Speedway",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "B2",
+                        "track_title": "Ice Drummer",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "B3",
+                        "track_title": "Bye Bye Bayou",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "B4",
+                        "track_title": "Lonely",
+                        "duration": ""
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Blonde Redhead",
+        "artist_sites": [
+            {
+                "name": "Bandcamp",
+                "url": "https://blonderedhead.bandcamp.com/album/blonde-redhead"
+            },
+            {
+                "name": "blonde-redhead.com",
+                "url": "http://blonde-redhead.com/"
+            },
+            {
+                "name": "Facebook",
+                "url": "http://www.facebook.com/blonderedheadofficial"
+            },
+            {
+                "name": "X",
+                "url": "http://twitter.com/BlondeRedhead"
+            },
+            {
+                "name": "MySpace",
+                "url": "http://myspace.com/blonderedhead"
+            },
+            {
+                "name": "Songkick",
+                "url": "http://www.songkick.com/artists/547454-blonde-redhead"
+            },
+            {
+                "name": "4ad.com",
+                "url": "http://4ad.com/artists/blonderedhead"
+            },
+            {
+                "name": "windishagency.com",
+                "url": "http://www.windishagency.com/artists/blonde_redhead"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Blonde_Redhead"
+            },
+            {
+                "name": "Soundcloud",
+                "url": "http://soundcloud.com/blonde-redhead-2"
+            },
+            {
+                "name": "YouTube",
+                "url": "http://www.youtube.com/user/blonderedheadmusic"
+            },
+            {
+                "name": "YouTube",
+                "url": "http://www.youtube.com/user/BlondeRedheadVEVO"
+            }
+        ],
+        "members": [
+            {
+                "name": "Amedeo Pace",
+                "active": true
+            },
+            {
+                "name": "Kazu Makino",
+                "active": true
+            },
+            {
+                "name": "Maki Takahashi",
+                "active": false
+            },
+            {
+                "name": "Simone Pace",
+                "active": true
+            },
+            {
+                "name": "Tada Hirano",
+                "active": false
+            },
+            {
+                "name": "Toko Yasuda",
+                "active": false
+            },
+            {
+                "name": "Vern Rumsey",
+                "active": false
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Blonde Redhead – La Mia Vita Violenta",
+                "release_year": "4 de out. de 2023",
+                "label": "Smells Like Records",
+                "tracks": [
+                    {
+                        "track_position": "1",
+                        "track_title": "(I Am Taking Out My Eurotrash) I Still Get Rocks Off",
+                        "duration": "3:40"
+                    },
+                    {
+                        "track_position": "2",
+                        "track_title": "Violent Life",
+                        "duration": "3:51"
+                    },
+                    {
+                        "track_position": "3",
+                        "track_title": "U.F.O.",
+                        "duration": "5:38"
+                    },
+                    {
+                        "track_position": "4",
+                        "track_title": "I Am There While You Choke On Me",
+                        "duration": "1:56"
+                    },
+                    {
+                        "track_position": "5",
+                        "track_title": "Harmony",
+                        "duration": "5:16"
+                    },
+                    {
+                        "track_position": "6",
+                        "track_title": "Down Under",
+                        "duration": "4:09"
+                    },
+                    {
+                        "track_position": "7",
+                        "track_title": "Bean",
+                        "duration": "4:37"
+                    },
+                    {
+                        "track_position": "8",
+                        "track_title": "Young Neil",
+                        "duration": "1:12"
+                    },
+                    {
+                        "track_position": "9",
+                        "track_title": "Jewel",
+                        "duration": "4:38"
+                    },
+                    {
+                        "track_position": "10",
+                        "track_title": "10 Feet High",
+                        "duration": "3:22"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Frank Sinatra",
+        "artist_sites": [
+            {
+                "name": "sinatra.com",
+                "url": "http://www.sinatra.com"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/sinatra"
+            },
+            {
+                "name": "X",
+                "url": "https://twitter.com/FrankSinatra"
+            },
+            {
+                "name": "YouTube",
+                "url": "https://www.youtube.com/user/FrankSinatra"
+            },
+            {
+                "name": "sinatrafamily.com",
+                "url": "https://sinatrafamily.com/"
+            },
+            {
+                "name": "britannica.com",
+                "url": "https://www.britannica.com/biography/Frank-Sinatra"
+            },
+            {
+                "name": "ibdb.com",
+                "url": "https://www.ibdb.com/broadway-cast-staff/frank-sinatra-79640"
+            },
+            {
+                "name": "Imdb",
+                "url": "https://www.imdb.com/name/nm0000069/"
+            },
+            {
+                "name": "sinatra.fandom.com",
+                "url": "https://sinatra.fandom.com/wiki/Frank_Sinatra_Wiki"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Frank_Sinatra"
+            },
+            {
+                "name": "adp.library.ucsb.edu",
+                "url": "https://adp.library.ucsb.edu/names/101977"
+            }
+        ],
+        "members": [
+            {
+                "name": "A Very Close Relative",
+                "active": true
+            },
+            {
+                "name": "Frank Sinatra And Band",
+                "active": true
+            },
+            {
+                "name": "Frank Sinatra And Friends",
+                "active": true
+            },
+            {
+                "name": "Frank Sinatra And His Orchestra",
+                "active": true
+            },
+            {
+                "name": "Frank Sinatra And Sextet",
+                "active": true
+            },
+            {
+                "name": "Frank Sinatra With Chorus",
+                "active": true
+            },
+            {
+                "name": "Harry James And His Orchestra",
+                "active": true
+            },
+            {
+                "name": "Metronome All Stars",
+                "active": true
+            },
+            {
+                "name": "Metronome All-Star Band",
+                "active": true
+            },
+            {
+                "name": "Nancy Sinatra & Friends",
+                "active": true
+            },
+            {
+                "name": "Sinatra & Company",
+                "active": true
+            },
+            {
+                "name": "The Rat Pack",
+                "active": true
+            },
+            {
+                "name": "The Sinatra Family",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Frank Sinatra – The Voice Of Frank Sinatra",
+                "release_year": "1946",
+                "label": "Columbia",
+                "tracks": [
+                    {
+                        "track_position": "A",
+                        "track_title": "You Go To My Head",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "B",
+                        "track_title": "I Don't Know Why (I Just Do)",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "C",
+                        "track_title": "These Foolish Things (Remind Me Of You)",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "D",
+                        "track_title": "(I Don't Stand) A Ghost Of A Chance (With You)",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "E",
+                        "track_title": "Why Shouldn't I?",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "F",
+                        "track_title": "Try A Little Tenderness",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "G",
+                        "track_title": "Someone To Watch Over Me",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "H",
+                        "track_title": "Paradise",
+                        "duration": ""
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Nat King Cole",
+        "artist_sites": [
+            {
+                "name": "natkingcole.com",
+                "url": "https://www.natkingcole.com/"
+            },
+            {
+                "name": "natkingcole.50webs.com",
+                "url": "http://natkingcole.50webs.com/"
+            },
+            {
+                "name": "spriee.com",
+                "url": "https://spriee.com/people/nat-king-cole/"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Nat_King_Cole"
+            },
+            {
+                "name": "britannica.com",
+                "url": "https://www.britannica.com/biography/Nat-King-Cole"
+            },
+            {
+                "name": "Imdb",
+                "url": "https://www.imdb.com/name/nm0170713/"
+            },
+            {
+                "name": "adp.library.ucsb.edu",
+                "url": "https://adp.library.ucsb.edu/index.php/mastertalent/detail/104560/Cole_Nat_King"
+            },
+            {
+                "name": "adp.library.ucsb.edu",
+                "url": "https://adp.library.ucsb.edu/names/104560"
+            }
+        ],
+        "members": [
+            {
+                "name": "\"Shorty\" Nadine",
+                "active": true
+            },
+            {
+                "name": "Aye Guy",
+                "active": true
+            },
+            {
+                "name": "Eddie Laguna",
+                "active": true
+            },
+            {
+                "name": "Lord Calvert (2)",
+                "active": true
+            },
+            {
+                "name": "Nature Boy (14)",
+                "active": true
+            },
+            {
+                "name": "Sam Schmaltz",
+                "active": true
+            },
+            {
+                "name": "The \"King\"",
+                "active": true
+            },
+            {
+                "name": "Eddie Cole's Solid Swingers",
+                "active": true
+            },
+            {
+                "name": "King Cole Quartet",
+                "active": true
+            },
+            {
+                "name": "Lester Young Trio",
+                "active": true
+            },
+            {
+                "name": "Lester Young-Buddy Rich Trio",
+                "active": true
+            },
+            {
+                "name": "Metronome All Stars",
+                "active": true
+            },
+            {
+                "name": "Metronome All-Star Band",
+                "active": true
+            },
+            {
+                "name": "The International Jazzmen",
+                "active": true
+            },
+            {
+                "name": "The Just Jazz All Stars",
+                "active": true
+            },
+            {
+                "name": "The Keynoters (3)",
+                "active": true
+            },
+            {
+                "name": "The Nat King Cole Trio",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Nat King Cole – Nat King Cole At The Piano",
+                "release_year": "1949",
+                "label": "Capitol Records",
+                "tracks": [
+                    {
+                        "track_position": "A",
+                        "track_title": "Cole Capers",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "B",
+                        "track_title": "These Foolish Things (Remind Me Of You)",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "C",
+                        "track_title": "Three Little Words",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "D",
+                        "track_title": "I'll Never Be The Same",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "E",
+                        "track_title": "How High The Moon",
+                        "duration": ""
+                    },
+                    {
+                        "track_position": "F",
+                        "track_title": "Blues In My Shower",
+                        "duration": ""
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Freddie Gibbs",
+        "artist_sites": [
+            {
+                "name": "Soundcloud",
+                "url": "http://soundcloud.com/gangstagibbs"
+            },
+            {
+                "name": "MySpace",
+                "url": "http://www.myspace.com/freddiegibbs"
+            },
+            {
+                "name": "Facebook",
+                "url": "http://www.facebook.com/pages/Freddie-Gibbs/8065620956"
+            },
+            {
+                "name": "X",
+                "url": "http://www.twitter.com/FREDDIEGIBBS"
+            },
+            {
+                "name": "bandtraq.com",
+                "url": "https://bandtraq.com/freddiegibbs"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Freddie_Gibbs"
+            }
+        ],
+        "members": [
+            {
+                "name": "Freddie Kane",
+                "active": true
+            },
+            {
+                "name": "Fredrick Tipton",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "DJ Skee (2) Presents Freddie Gibbs – Midwestgangstaboxframecadillacmuzik",
+                "release_year": "2009",
+                "label": "Not On Label",
+                "tracks": [
+                    {
+                        "track_position": "1",
+                        "track_title": "Midwest Malcolm (Intro)",
+                        "duration": "2:35"
+                    },
+                    {
+                        "track_position": "2",
+                        "track_title": "Boxframe Cadillac",
+                        "duration": "3:08"
+                    },
+                    {
+                        "track_position": "3",
+                        "track_title": "Sumthin' U Should Know",
+                        "duration": "4:32"
+                    },
+                    {
+                        "track_position": "4",
+                        "track_title": "For My Niggas",
+                        "duration": "4:21"
+                    },
+                    {
+                        "track_position": "5",
+                        "track_title": "Murda On My Mind",
+                        "duration": "3:04"
+                    },
+                    {
+                        "track_position": "6",
+                        "track_title": "Womb 2 The Tomb",
+                        "duration": "4:03"
+                    },
+                    {
+                        "track_position": "7",
+                        "track_title": "County Bounce",
+                        "duration": "3:32"
+                    },
+                    {
+                        "track_position": "8",
+                        "track_title": "How I Feel",
+                        "duration": "4:41"
+                    },
+                    {
+                        "track_position": "9",
+                        "track_title": "Talkin' Bout You",
+                        "duration": "3:54"
+                    },
+                    {
+                        "track_position": "10",
+                        "track_title": "Still Standing",
+                        "duration": "3:44"
+                    },
+                    {
+                        "track_position": "11",
+                        "track_title": "I'm The Man",
+                        "duration": "4:16"
+                    },
+                    {
+                        "track_position": "12",
+                        "track_title": "Bussdown",
+                        "duration": "3:12"
+                    },
+                    {
+                        "track_position": "13",
+                        "track_title": "Playa",
+                        "duration": "4:59"
+                    },
+                    {
+                        "track_position": "14",
+                        "track_title": "Iodine Poison",
+                        "duration": "3:39"
+                    },
+                    {
+                        "track_position": "15",
+                        "track_title": "Just Tryin' Ta Make It",
+                        "duration": "3:35"
+                    },
+                    {
+                        "track_position": "16",
+                        "track_title": "One Mo' Time",
+                        "duration": "3:09"
+                    },
+                    {
+                        "track_position": "17",
+                        "track_title": "Higher Learning",
+                        "duration": "7:03"
+                    },
+                    {
+                        "track_position": "18",
+                        "track_title": "Smoke Away The Pain",
+                        "duration": "3:38"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Madlib",
+        "artist_sites": [
+            {
+                "name": "Bandcamp",
+                "url": "https://madlib.bandcamp.com/"
+            },
+            {
+                "name": "Bandcamp",
+                "url": "https://yesterdaysnewquintet.bandcamp.com/"
+            },
+            {
+                "name": "Facebook",
+                "url": "http://www.facebook.com/madlib"
+            },
+            {
+                "name": "Mixcloud",
+                "url": "http://www.mixcloud.com/madlib"
+            },
+            {
+                "name": "MySpace",
+                "url": "http://myspace.com/madlib"
+            },
+            {
+                "name": "rappcats.com",
+                "url": "http://www.rappcats.com/category/madlib"
+            },
+            {
+                "name": "stonesthrow.com",
+                "url": "http://www.stonesthrow.com/madlib"
+            },
+            {
+                "name": "X",
+                "url": "http://twitter.com/madlib"
+            },
+            {
+                "name": "Wikipedia",
+                "url": "http://en.wikipedia.org/wiki/Madlib"
+            },
+            {
+                "name": "YouTube",
+                "url": "http://www.youtube.com/user/mmmmmmmmmadlib"
+            }
+        ],
+        "members": [
+            {
+                "name": "Ahmad Miller",
+                "active": true
+            },
+            {
+                "name": "Beat Konducta",
+                "active": true
+            },
+            {
+                "name": "D. Relmond",
+                "active": true
+            },
+            {
+                "name": "Dezo",
+                "active": true
+            },
+            {
+                "name": "DJ Lord Such",
+                "active": true
+            },
+            {
+                "name": "DJ Rels",
+                "active": true
+            },
+            {
+                "name": "Duma Peterson",
+                "active": true
+            },
+            {
+                "name": "Joe McDuphrey",
+                "active": true
+            },
+            {
+                "name": "Joe McDuphrey Experience",
+                "active": true
+            },
+            {
+                "name": "Junior Taylor",
+                "active": true
+            },
+            {
+                "name": "Kamala Walker and The Soul Tribe",
+                "active": true
+            },
+            {
+                "name": "Kay Henderson",
+                "active": true
+            },
+            {
+                "name": "Malik Flavors",
+                "active": true
+            },
+            {
+                "name": "Medicine Man (8)",
+                "active": true
+            },
+            {
+                "name": "Monk Hughes",
+                "active": true
+            },
+            {
+                "name": "Monk Hughes & The Outer Realm",
+                "active": true
+            },
+            {
+                "name": "Morgan Adams III",
+                "active": true
+            },
+            {
+                "name": "Otis Jackson Jr.",
+                "active": true
+            },
+            {
+                "name": "Otis Jackson Jr. Trio",
+                "active": true
+            },
+            {
+                "name": "Quasimoto",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Madlib – Shades Of Blue",
+                "release_year": "2003",
+                "label": "Blue Note",
+                "tracks": [
+                    {
+                        "track_position": "A1",
+                        "track_title": "Introduction",
+                        "duration": "0:32"
+                    },
+                    {
+                        "track_position": "A2",
+                        "track_title": "Slim's Return",
+                        "duration": "3:56"
+                    },
+                    {
+                        "track_position": "A3",
+                        "track_title": "Distant Land",
+                        "duration": "3:58"
+                    },
+                    {
+                        "track_position": "A4",
+                        "track_title": "Mystic Bounce",
+                        "duration": "3:56"
+                    },
+                    {
+                        "track_position": "B1",
+                        "track_title": "Stormy",
+                        "duration": "3:41"
+                    },
+                    {
+                        "track_position": "B2",
+                        "track_title": "Blue Note Interlude",
+                        "duration": "0:42"
+                    },
+                    {
+                        "track_position": "B3",
+                        "track_title": "Please Set Me At Ease",
+                        "duration": "5:02"
+                    },
+                    {
+                        "track_position": "B4",
+                        "track_title": "Funky Blue Note",
+                        "duration": "3:07"
+                    },
+                    {
+                        "track_position": "B5",
+                        "track_title": "Alfred Lion Interlude",
+                        "duration": "1:06"
+                    },
+                    {
+                        "track_position": "C1",
+                        "track_title": "Stepping Into Tomorrow",
+                        "duration": "7:36"
+                    },
+                    {
+                        "track_position": "C2",
+                        "track_title": "Andrew Hill Break",
+                        "duration": "1:06"
+                    },
+                    {
+                        "track_position": "C3",
+                        "track_title": "Montara",
+                        "duration": "5:51"
+                    },
+                    {
+                        "track_position": "D1",
+                        "track_title": "Song For My Father",
+                        "duration": "5:46"
+                    },
+                    {
+                        "track_position": "D2",
+                        "track_title": "Footprints",
+                        "duration": "4:58"
+                    },
+                    {
+                        "track_position": "D3",
+                        "track_title": "Peace / Dolphin Dance",
+                        "duration": "5:38"
+                    },
+                    {
+                        "track_position": "D4",
+                        "track_title": "Outro",
+                        "duration": "0:13"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "artist_name": "Roni Size / Reprazent",
+        "artist_sites": [
+            {
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Reprazent"
+            }
+        ],
+        "members": [
+            {
+                "name": "Clive Deamer",
+                "active": true
+            },
+            {
+                "name": "Daniel Kausman",
+                "active": true
+            },
+            {
+                "name": "Dominic Smith",
+                "active": true
+            },
+            {
+                "name": "Jay Wilcox",
+                "active": true
+            },
+            {
+                "name": "Kirk Thompson",
+                "active": true
+            },
+            {
+                "name": "Paul Southey",
+                "active": true
+            },
+            {
+                "name": "Ryan Williams (3)",
+                "active": true
+            },
+            {
+                "name": "Si John",
+                "active": true
+            },
+            {
+                "name": "Tracey Bowen",
+                "active": true
+            },
+            {
+                "name": "Yuval Gabay",
+                "active": true
+            }
+        ],
+        "genre": "Rock",
+        "styles": [
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock",
+            "House",
+            "Punk",
+            "Soul",
+            "Experimental",
+            "Prog Rock"
+        ],
+        "albums": [
+            {
+                "album_name": "Roni Size / Reprazent – New Forms",
+                "release_year": "1997",
+                "label": "Talkin' Loud",
+                "tracks": [
+                    {
+                        "track_position": "1-01",
+                        "track_title": "Railing",
+                        "duration": "2:04"
+                    },
+                    {
+                        "track_position": "1-02",
+                        "track_title": "Brown Paper Bag",
+                        "duration": "9:03"
+                    },
+                    {
+                        "track_position": "1-03",
+                        "track_title": "New Forms",
+                        "duration": "7:44"
+                    },
+                    {
+                        "track_position": "1-04",
+                        "track_title": "Lets Get It On",
+                        "duration": "6:58"
+                    },
+                    {
+                        "track_position": "1-05",
+                        "track_title": "Digital",
+                        "duration": "9:04"
+                    },
+                    {
+                        "track_position": "1-06",
+                        "track_title": "Matter Of Fact",
+                        "duration": "4:04"
+                    },
+                    {
+                        "track_position": "1-07",
+                        "track_title": "Mad Cat",
+                        "duration": "4:55"
+                    },
+                    {
+                        "track_position": "1-08",
+                        "track_title": "Heroes",
+                        "duration": "6:34"
+                    },
+                    {
+                        "track_position": "1-09",
+                        "track_title": "Share The Fall (Full Vocal Mix)",
+                        "duration": "6:13"
+                    },
+                    {
+                        "track_position": "1-10",
+                        "track_title": "Watching Windows",
+                        "duration": "5:32"
+                    },
+                    {
+                        "track_position": "1-11",
+                        "track_title": "Beatbox",
+                        "duration": "1:09"
+                    },
+                    {
+                        "track_position": "1-12",
+                        "track_title": "Morse Code",
+                        "duration": "6:58"
+                    },
+                    {
+                        "track_position": "1-13",
+                        "track_title": "Destination",
+                        "duration": "8:31"
+                    },
+                    {
+                        "track_position": "2-01",
+                        "track_title": "Intro",
+                        "duration": "0:53"
+                    },
+                    {
+                        "track_position": "2-02",
+                        "track_title": "Hi-potent",
+                        "duration": "6:52"
+                    },
+                    {
+                        "track_position": "2-03",
+                        "track_title": "Trust Me",
+                        "duration": "6:26"
+                    },
+                    {
+                        "track_position": "2-04",
+                        "track_title": "Change My Life",
+                        "duration": "8:27"
+                    },
+                    {
+                        "track_position": "2-05",
+                        "track_title": "Share The Fall",
+                        "duration": "6:25"
+                    },
+                    {
+                        "track_position": "2-06",
+                        "track_title": "Down",
+                        "duration": "6:50"
+                    },
+                    {
+                        "track_position": "2-07",
+                        "track_title": "Jazz",
+                        "duration": "6:03"
+                    },
+                    {
+                        "track_position": "2-08",
+                        "track_title": "Hot Stuff",
+                        "duration": "6:31"
+                    },
+                    {
+                        "track_position": "2-09",
+                        "track_title": "Ballet Dance",
+                        "duration": "6:41"
+                    }
+                ]
+            }
+        ]
+    }
+]
