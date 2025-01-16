@@ -83,7 +83,7 @@ def extrair_dados_artista(driver, artist_url, base_url):
         # Links para os álbuns
         album_links = [
             link.get("href")
-            for link in artist_soup.select("a[href*='/release/']")
+            for link in artist_soup.select("a[href*='/master/']")
             if link.get("href")
         ]
 
@@ -126,7 +126,7 @@ def extrair_dados_album(driver, album_url):
         album_name = album_soup.select_one("h1").text.strip() if album_soup.select_one("h1") else "Desconhecido"
 
         # Ano de lançamento
-        release_year = album_soup.select_one("time[datetime]").get("datetime", "Desconhecido") if album_soup.select_one("time[datetime]") else "Desconhecido"
+        release_year = album_soup.select_one("a[href*='/year/']").text.strip() if album_soup.select_one("a[href*='/year/']") else "Desconhecido"
 
         # Gravadora
         label_element = album_soup.select_one("a[href*='/label/']")
@@ -193,4 +193,5 @@ def scrape_discogs():
 
 if __name__ == "__main__":
     scrape_discogs()
+
 
