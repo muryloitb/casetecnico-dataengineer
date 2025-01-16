@@ -1,161 +1,113 @@
-# Discogs Scraper
-
-Este README fornece uma explicação detalhada e humanizada sobre o script fornecido, que realiza scraping de dados do site Discogs para coletar informações sobre artistas, álbuns e músicas. O objetivo é simplificar a execução e manutenção do script, além de facilitar sua adaptação para diferentes casos de uso.
+# Scraping de Artistas e Álbuns no Discogs
 
 ---
 
-## **Descrição Geral**
+#### **Descrição Geral**
 
-O script utiliza o Selenium WebDriver e o BeautifulSoup para navegar no site Discogs e extrair informações de artistas e seus álbuns. Ele é configurado para trabalhar com um gênero musical específico e coleta até 10 artistas por vez, salvando os dados em um arquivo JSONL.
-
----
-
-## **Requisitos**
-
-1. **Python 3.7+**
-2. Bibliotecas Python necessárias:
-   - `selenium`
-   - `bs4` (BeautifulSoup)
-   - `re`
-   - `json`
-3. **Google Chrome** instalado no sistema.
-4. **ChromeDriver** compatível com a versão do Google Chrome instalada.
-
-### **Instalação das Dependências**
-
-Execute o comando abaixo para instalar as bibliotecas necessárias:
-
-```bash
-pip install selenium beautifulsoup4
-```
+O código acima é um script desenvolvido em Python para coletar informações detalhadas de artistas e seus álbuns no site **Discogs**. Ele utiliza as bibliotecas **Selenium** e **BeautifulSoup** para realizar a navegação automática no site e extrair dados de maneira estruturada. O objetivo é criar um arquivo JSON contendo informações sobre artistas, membros, gêneros, estilos e detalhes dos álbuns.
 
 ---
 
-## **Funcionamento do Script**
+#### **Funcionalidades**
 
-### **1. Configuração do Selenium**
+1. **Coletar Links de Artistas**
+   - Navega até a página de um gênero específico no Discogs.
+   - Extrai até 10 links de artistas para limitar o escopo.
 
-O script utiliza o Selenium para automatizar a navegação no Discogs. O Chrome é executado no modo headless (sem interface gráfica) para maior eficiência.
+2. **Extrair Dados de Artistas**
+   - Obtém informações como:
+     - Nome do artista.
+     - Sites associados.
+     - Membros da banda (incluindo status de atividade).
+     - Gênero e estilos musicais.
+     - Links e informações de seus álbuns principais (limitado a 1 álbum por artista).
 
-### **2. Estrutura Principal do Script**
+3. **Extrair Dados de Álbuns**
+   - Para cada álbum selecionado, coleta:
+     - Nome do álbum.
+     - Ano de lançamento.
+     - Gravadora responsável.
+     - Lista de faixas (posição, nome e duração).
 
-#### \*\*Função: \*\***`coletar_links_artistas`**
-
-- Navega na página de exploração de um gênero específico.
-- Coleta links dos perfis de até 10 artistas.
-- Retorna uma lista de URLs dos artistas.
-
-#### \*\*Função: \*\***`extrair_dados_artista`**
-
-- Acessa a página de um artista e extrai:
-  - Nome do artista.
-  - Gêneros e estilos musicais.
-  - Membros da banda (se aplicável).
-  - Links para outros sites associados ao artista.
-  - Dados dos álbuns (limitado a 10 álbuns).
-
-#### \*\*Função: \*\***`extrair_dados_album`**
-
-- Coleta detalhes de um álbum, incluindo:
-  - Nome do álbum.
-  - Ano de lançamento.
-  - Gravadora.
-  - Faixas e suas durações.
-
-#### \*\*Função Principal: \*\***`scrape_discogs`**
-
-- Define o gênero musical a ser explorado.
-- Configura o WebDriver.
-- Coleta os dados dos artistas e os salva progressivamente em um arquivo JSONL.
-
-### **3. Formato de Saída**
-
-Os dados coletados são salvos no formato JSONL (JSON Lines), que é ideal para grandes volumes de dados estruturados. Cada linha do arquivo representa os dados de um artista.
-
-Exemplo de uma linha do arquivo `discogs_data.jsonl`:
-
-```json
-{
-  "genre": "Rock",
-  "artist_name": "The Beatles",
-  "members": ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"],
-  "artist_sites": ["https://www.thebeatles.com"],
-  "albums": [
-    {
-      "release_year": "1969",
-      "album_name": "Abbey Road",
-      "label": "Apple Records",
-      "tracks": [
-        {"track_number": 1, "track_name": "Come Together", "duration": "4:20"},
-        {"track_number": 2, "track_name": "Something", "duration": "3:03"}
-      ]
-    }
-  ]
-}
-```
+4. **Salvar Dados em JSON**
+   - Todos os dados coletados são salvos no arquivo `discogs_data.json` em um formato estruturado e legível.
 
 ---
 
-## **Como Executar**
+#### **Como o Código Funciona**
 
-1. Certifique-se de que o ChromeDriver está configurado corretamente e o caminho está atualizado na função `Service`:
+1. **Configuração do Selenium**
+   - Utiliza o ChromeDriver para navegação automatizada.
+   - Configurado no modo "headless" para execução sem interface gráfica.
+   - Define um **User-Agent** para simular um navegador real.
 
-```python
-service = Service("/caminho/para/chromedriver")
-```
+2. **Fluxo Principal (`scrape_discogs`)**
+   - Define o gênero musical desejado (ex.: Rock).
+   - Coleta links de artistas com a função `coletar_links_artistas`.
+   - Para cada artista, extrai dados detalhados com `extrair_dados_artista`.
+   - Caso o artista tenha álbuns disponíveis, a função `extrair_dados_album` coleta informações adicionais.
 
-2. Ajuste o gênero musical na função principal:
-
-```python
-genre = "Rock"  # Substitua "Rock" pelo gênero desejado.
-```
-
-3. Execute o script no terminal:
-
-```bash
-python nome_do_script.py
-```
-
-4. Verifique o arquivo de saída `discogs_data.jsonl` na pasta do script.
+3. **Manuseio de Exceções**
+   - Implementa verificações para lidar com erros de carregamento de página, elementos inexistentes e outros problemas comuns ao scraping.
 
 ---
 
-## **Erros Comuns e Soluções**
+#### **Dependências**
 
-1. **Erro: ********`TimeoutException`******** ao carregar páginas**
+- **Python 3.7+**
+- Bibliotecas necessárias (instale com `pip install`):
+  - `selenium`
+  - `beautifulsoup4`
+  - `lxml`
+- **ChromeDriver**
+  - Certifique-se de ter o **ChromeDriver** instalado e configurado no PATH do sistema.
+  - Ajuste o caminho para o ChromeDriver na linha:
+    ```python
+    service = Service("/usr/local/bin/chromedriver")
+    ```
 
-   - A conexão pode estar lenta ou o site sobrecarregado. Tente aumentar o tempo de espera em:
+---
 
-   ```python
-   WebDriverWait(driver, 15)
+#### **Configuração e Execução**
+
+1. **Instale as dependências**
+   ```bash
+   pip install selenium beautifulsoup4 lxml
    ```
 
-2. **Erro: Caminho do ChromeDriver inválido**
+2. **Configure o ChromeDriver**
+   - Baixe a versão compatível com seu navegador [aqui](https://chromedriver.chromium.org/).
+   - Altere o caminho no código, se necessário.
 
-   - Certifique-se de que o ChromeDriver está instalado e o caminho correto foi fornecido na linha:
+3. **Modifique o Gênero Musical**
+   - Na variável `genre`, insira o gênero desejado (ex.: "Jazz", "Pop", etc.).
 
-   ```python
-   service = Service("/caminho/para/chromedriver")
+4. **Execute o script**
+   ```bash
+   python nome_do_arquivo.py
    ```
 
-3. **Erro ao coletar álbuns ou faixas**
-
-   - Nem todos os álbuns possuem todas as informações. O script já trata exceções para evitar interrupções.
-
----
-
-## **Considerações Finais**
-
-- O script é projetado para capturar até 10 artistas por execução. Para aumentar este limite, ajuste o seguinte trecho:
-
-```python
-if len(artist_links) == 10:
-    break
-```
-
-
-```
+5. **Verifique os Dados Coletados**
+   - O arquivo `discogs_data.json` será criado na mesma pasta do script.
 
 ---
 
+#### **Possíveis Melhorias**
 
+1. **Aumentar o Limite de Artistas e Álbuns**
+   - Remova ou ajuste o limite imposto no código:
+     ```python
+     if len(artist_links) == 10:  # Limitar a 10 artistas
+         break
+     ```
+
+2. **Adicionar Mais Informações**
+   - Expandir o scraping para incluir mais detalhes, como prêmios, críticas ou resenhas dos álbuns.
+
+3. **Melhorar a Resiliência**
+   - Adicionar mais verificações para tratar erros e elementos ausentes no site.
+
+4. **Interface Gráfica ou API**
+   - Transformar o script em uma API ou criar uma interface para uso mais amigável.
+
+--- - - - - - - -- - - - - - - - - - - -- - - - - - -- - - - - - - - - - - - - - -- - - - - - - - 
